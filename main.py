@@ -1,5 +1,5 @@
-import linhas
-import nos
+from elementos import linhas
+from elementos import nos
 
 # ESCREVENDO O PROGRAMA PROPRIAMENTE DITO
 

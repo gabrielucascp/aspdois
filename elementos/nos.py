@@ -62,7 +62,6 @@ class Ybarra:
             for j,l in enumerate(matriz_y):
                 for element in self.nos_conectados:
                     if (i + 1) == element[0] and (j + 1) == element[1]:
-                        print(self.nos_conectados)
                         if i == j:
                             matriz_y[i,j] = element[2]
                         else:
