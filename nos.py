@@ -9,16 +9,16 @@ class Conexoes:
         '''
         self.numero_no = numero_no
         self.conectados = args
-        self.lista_conexoes = self.func_lista_conexoes()
-        self.admitancia_total = self.func_admitancia_total()
+        self.lista_conexoes = self._lista_conexoes()
+        self.admitancia_total = self._admitancia_total()
 
-    def func_lista_conexoes(self):
+    def _lista_conexoes(self):
         resposta = []
         for elemento in self.conectados:
             resposta.append(str(elemento))
         return resposta
 
-    def func_admitancia_total(self):
+    def _admitancia_total(self):
         admitancia_total = 0
         for conectado in self.conectados:
             params = conectado.parametros
@@ -35,7 +35,7 @@ class Ybarra:
         '''
             deve receber como argumentos os objetos Conexoes, correspondetes aos nós.
         '''
-        self.nos = args
+        self.nos = args #args = nos
         self.ordem_matriz = len(args)
         self.nos_conectados = self._pega_nos_conectados()
 
@@ -48,21 +48,26 @@ class Ybarra:
                 if i.numero_no != j.numero_no:
                     sera_se_achou_dentro.append(i.numero_no)
                     sera_se_achou_dentro.append(j.numero_no)
-                    for i,linha in enumerate(i.lista_conexoes):
+                    for k,linha in enumerate(i.lista_conexoes):
                         if linha in j.lista_conexoes:
-                            sera_se_achou_dentro.append(j.conectados[i].admitancia)
+                            sera_se_achou_dentro.append(j.conectados[k].admitancia)
                 else:
                     sera_se_achou.append([i.numero_no, i.numero_no, i.admitancia_total])
             sera_se_achou.append(sera_se_achou_dentro)
         return sera_se_achou
 
     def gera_matriz(self):
-        matriz_y = numpy.zeros((self.ordem_matriz,self.ordem_matriz))
-        for i, linha in enumerate(matriz_y):
-            for j, linha in enumerate(matriz_y):
+        matriz_y = numpy.zeros((self.ordem_matriz,self.ordem_matriz), numpy.complex_)
+        for i,l in enumerate(matriz_y):
+            for j,l in enumerate(matriz_y):
                 for element in self.nos_conectados:
-                    if i == element[0] and j == element[1]:
-                        matriz_y[i,j] = element[2]
+                    if (i + 1) == element[0] and (j + 1) == element[1]:
+                        print(self.nos_conectados)
+                        if i == j:
+                            matriz_y[i,j] = element[2]
+                        else:
+                            matriz_y[i,j] = -element[2]
+                        break
         return matriz_y
 
                 
