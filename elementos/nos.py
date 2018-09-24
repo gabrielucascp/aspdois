@@ -58,7 +58,7 @@ class Conexoes(Pu):
         admitancia_total = 0
         for conectado in self.conectados:
             params = conectado.parametros
-            if len(params) == 2:
+            if type(params) == tuple:
                 admitancia_total += params[1]
                 admitancia_total += 1/params[0]
             else:
