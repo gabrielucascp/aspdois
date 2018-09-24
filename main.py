@@ -2,8 +2,6 @@ from elementos import linhas
 from elementos.nos import Conexoes, Ybarra
 
 # ESCREVENDO O PROGRAMA PROPRIAMENTE DITO
-
-
 linha1 = linhas.Linha(  nome_linha='linha1',
                         comprimento=32E3,
                         geometria='transposta',
@@ -27,11 +25,11 @@ linha2 = linhas.Linha(  nome_linha="linha2",
                         distancia_fases=4,
                         distancia_geminados=.4,
                         )
-
+# argumentos: numero_no, tipo_no, setor, *linhas
 no1 = Conexoes(1, 'slack', 1, linha1, linha2)
 no2 = Conexoes(2, 'carga', 1, linha1, potencia_ativa=10, potencia_reativa=20)
 ybarra = Ybarra(no1, no2)
 
 # Definição dos nós para o programa
 
-print(ybarra.gera_matriz())
+print(no2.potencia_reativa)

@@ -1,5 +1,6 @@
 import numpy
-from mecanicas.pu import Pu, DADOS_PU
+from settings import DADOS_PU
+from mecanicas.pu import Pu
 
 class Conexoes(Pu):
     def __init__(self, numero_no, tipo_no, setor,
