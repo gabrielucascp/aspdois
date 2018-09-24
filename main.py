@@ -1,7 +1,8 @@
 from elementos import linhas
-from elementos import nos
+from elementos.nos import Conexoes, Ybarra
 
 # ESCREVENDO O PROGRAMA PROPRIAMENTE DITO
+
 
 linha1 = linhas.Linha(  nome_linha='linha1',
                         comprimento=32E3,
@@ -27,9 +28,9 @@ linha2 = linhas.Linha(  nome_linha="linha2",
                         distancia_geminados=.4,
                         )
 
-no1 = nos.Conexoes(1, linha1,linha2)
-no2 = nos.Conexoes(2, linha1)
-ybarra = nos.Ybarra(no1, no2)
+no1 = Conexoes(1, 'slack', 1, linha1, linha2)
+no2 = Conexoes(2, 'carga', 1, linha1, potencia_ativa=10, potencia_reativa=20)
+ybarra = Ybarra(no1, no2)
 
 # Definição dos nós para o programa
 
