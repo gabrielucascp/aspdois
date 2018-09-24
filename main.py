@@ -1,5 +1,6 @@
 from elementos import linhas
-from elementos.nos import Conexoes, Ybarra
+from elementos.nos import Conexoes
+from mecanicas.ybarra import Ybarra
 
 # ESCREVENDO O PROGRAMA PROPRIAMENTE DITO
 linha1 = linhas.Linha(  nome_linha='linha1',
