@@ -5,7 +5,7 @@ class Linha:
     '''
         No caso de geometria triangular:
         argumentos: (
-                    nome_linha = preferencialmente nome da variável
+                    nome_linha = preferencialmente nome da variavel
                     comprimento = numero
                     raio = numero
                     geminado = boleano
@@ -15,9 +15,9 @@ class Linha:
                     resistencia_dc = numero
                     geometria = string
                     )
-        Já no caso de geometria triangular:
+        Ja no caso de geometria triangular:
         argumentos: (
-                    nome_linha = preferencialmente nome da variável
+                    nome_linha = preferencialmente nome da variavel
                     comprimento = numero
                     raio = numero
                     geminado = boleano
@@ -50,7 +50,7 @@ class Linha:
             self.distancia_b_c = kwargs['distancia_b_c']
             self.distancia_c_a = kwargs['distancia_c_a']
         else:
-            raise EnvironmentError(f'''Erro. Este programa não suporta a geometria {kwargs['geometria']}.
+            raise EnvironmentError(f'''Erro. Este programa nao suporta a geometria {kwargs['geometria']}.
                     tente usar geometria transposta ou triangular''')
         # Isso deve ser consultado após gerar a linha
         self.parametros = self._calcular_parametros()

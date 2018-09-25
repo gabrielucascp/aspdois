@@ -1,12 +1,13 @@
-from settings import DADOS_PU
 from mecanicas.pu import Pu
+import numpy
 
 class Ybarra(Pu):
-    def __init__(self, *args, DADOS_PU=DADOS_PU):
+    def __init__(self, *args):
         '''
             argumentos:
             os objetos Conexoes, correspondetes aos nós.
         '''
+        from settings import DADOS_PU
         self.DADOS_PU = DADOS_PU
         self.nos = args #args = nos
         self.ordem_matriz = len(args)
@@ -30,16 +31,14 @@ class Ybarra(Pu):
         return sera_se_achou
 
     def gera_matriz(self):
-        ibase = self.sbase/self.vbase
-        zbase = self.vbase/ibase
         matriz_y = numpy.zeros((self.ordem_matriz,self.ordem_matriz), numpy.complex_)
-        for i,l in enumerate(matriz_y):
-            for j,l in enumerate(matriz_y):
+        for i,_ in enumerate(matriz_y):
+            for j,_ in enumerate(matriz_y):
                 for element in self.nos_conectados:
                     if (i + 1) == element[0] and (j + 1) == element[1]:
                         if i == j:
-                            matriz_y[i,j] = element[2]*zbase
+                            matriz_y[i,j] = element[2]
                         else:
-                            matriz_y[i,j] = -element[2]*zbase
+                            matriz_y[i,j] = -element[2]
                         break
         return matriz_y

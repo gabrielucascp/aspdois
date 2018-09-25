@@ -36,6 +36,4 @@ no1 = Conexoes(1, 'slack', 1, linha1, linha2, trafo1)
 no2 = Conexoes(2, 'carga', 1, linha1, potencia_ativa=10, potencia_reativa=20)
 ybarra = Ybarra(no1, no2)
 
-# Definição dos nós para o programa
-
-print(no2.potencia_reativa)
+print(ybarra.gera_matriz())

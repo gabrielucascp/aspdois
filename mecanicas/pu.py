@@ -1,3 +1,4 @@
+#classe que define propriedades PU
 class Pu:
     def __init__(self, setor, DADOS_PU):
         self.sbase = DADOS_PU[0]

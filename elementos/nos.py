@@ -1,5 +1,4 @@
 import numpy
-from settings import DADOS_PU
 from mecanicas.pu import Pu
 
 class Conexoes(Pu):
@@ -8,8 +7,7 @@ class Conexoes(Pu):
                     potencia_ativa=None, 
                     potencia_reativa=None, 
                     tensao=None, 
-                    fase=None, 
-                    DADOS_PU=DADOS_PU):
+                    fase=None):
         '''
             argumentos:
             argumentos obrigatórios:
@@ -20,6 +18,7 @@ class Conexoes(Pu):
             argumentos chave-valor:
             potencia_ativa, potencia_reativa, tensao e fase
         '''
+        from settings import DADOS_PU
         Pu.__init__(self,setor, DADOS_PU)
         self.setor = setor
         self.tipo_no = tipo_no
@@ -63,8 +62,7 @@ class Conexoes(Pu):
                 admitancia_total += 1/params[0]
             else:
                 admitancia_total += params
-        return admitancia_total*self.zbase
-
+        return admitancia_total
                 
 
 
