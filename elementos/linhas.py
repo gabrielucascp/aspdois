@@ -15,7 +15,7 @@ class Linha:
                     resistencia_dc = numero
                     geometria = string
                     )
-        Ja no caso de geometria triangular:
+        Ja no caso de geometria transposta:
         argumentos: (
                     nome_linha = preferencialmente nome da variavel
                     comprimento = numero
@@ -94,7 +94,7 @@ class Linha:
             GMD = (self.distancia_a_b*self.distancia_b_c*self.distancia_c_a)**(1/3)
             L_fase = 2E-7 * GMD / math.log(GMR)
 
-        Z_fase = complex(resistencia, 60*L_fase)
+        Z_fase = complex(resistencia, 60*L_fase) # não multiplica o L_fase por 2*pi*60  ?
 
         if self.comprimento >= 80 and self.comprimento < 250:
             C_fase = ((2*3.14*8.85E-12)/math.log(GMD/self.raio_medio_geometrico_c))
